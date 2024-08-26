@@ -9,7 +9,7 @@ function LeftSidebar() {
     const router = useRouter();
     const pathname = usePathname();
     return (
-        <section className="custom-scrollbar leftsidebar bg-gray-800">
+        <section className="custom-scrollbar leftsidebar">
             <div className="flex w-full flex-1 flex-col gap-6 px-6">
                 {/* To connect or map the links from index.js in constant folder */}
                 {sidebarLinks.map((link) => {
@@ -22,7 +22,7 @@ function LeftSidebar() {
                     <Link 
                     href={link.route}
                     key={link.label}
-                    className={`leftsidebar_link ${isActive && "bg-green-500"}`}
+                    className={`leftsidebar_link ${isActive && "bg-green-600"}`}
                     >
                     <Image 
                     src={link.imgURL}
@@ -31,12 +31,12 @@ function LeftSidebar() {
                     height={24}
                     />
 
-                    <p className={`text-${isActive ? "white" : "green-400"} max-lg:hidden`}>
+                    <p className={`text-${isActive ? "white" : "green-600"} max-lg:hidden`}>
                     {link.label}
                     </p>
                     </Link>
                 )}
-                )};
+                )}
             </div>
                         <div className="mt-10 px-6">
                         <SignedIn>
@@ -44,7 +44,7 @@ function LeftSidebar() {
                         <SignOutButton>
                         <div className="flex cursor-pointer gap-4 p-4">
                             <Image src={'/assets/logout.svg'}alt="Logout" width={24} height={24}/>
-                            <p className="text-green-500 max-lg:hidden">Logout</p>
+                            <p className="text-green-600 max-lg:hidden">Logout</p>
                         </div>
                     </SignOutButton>
                    </button> 

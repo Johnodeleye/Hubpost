@@ -21,7 +21,7 @@ function Bottombar() {
                     <Link 
                     href={link.route}
                     key={link.label}
-                    className={`bottombar_link ${isActive && "bg-green-500"}`}
+                    className={`bottombar_link ${isActive && "bg-green-600"}`}
                     >
                     <Image 
                     src={link.imgURL}
@@ -30,8 +30,8 @@ function Bottombar() {
                     height={24}
                     />
 
-                    <p className={`text-${isActive ? "white" : "green-400"} max-lg:hidden`}>
-                    {link.label}
+                    <p className={`text-${isActive ? "white" : "green-600"} max-sm:hidden`} style={{ fontSize: '12px' }}>
+                    {link.label.split(/\s+/)[0]}
                     </p>
                     </Link>
                 )}

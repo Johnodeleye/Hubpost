@@ -1,16 +1,15 @@
 import { SignIn } from '@clerk/nextjs';
-import Image from 'next/image';
+import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
-export default function Page() {
+async function Page() {
+  const user = await currentUser();
+  if (user) redirect("/feed");
   return (
-    <div className="bg-gray-800 h-screen">
-      <div className="mx-auto h-12 w-auto">
-        <Image src="/logo_white.png" alt="HubPost" width={100} height={100} />
-      </div>
       <SignIn
         appearance={{
           elements: {
-            formContainer: 'py-12 px-6 lg:px-8 backgroundColor:bg-gray-800',
+            formContainer: 'py-12 px-6 lg:px-8',
             form: 'border-2 border-green-400 py-8 px-6 rounded-lg shadow-md',
             formField: {
               label: 'block text-sm font-medium leading-6 text-white',
@@ -20,6 +19,7 @@ export default function Page() {
           },
         }}
       />
-    </div>
-  );
+  )
 }
+
+export default Page;
