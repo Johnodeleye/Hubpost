@@ -7,7 +7,7 @@ import { dark } from "@clerk/themes";
 function Topbar() {
     return (
     <nav className="topbar">
-        <Link href={'/homepage'} className="flex items-center gap-4">
+        <Link href={'/feed'} className="flex items-center gap-4">
         <Image src={'/Logo White.png'}alt="HubLogo" width={120} height={120}/>
 
         </Link>

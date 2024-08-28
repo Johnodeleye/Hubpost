@@ -4,7 +4,7 @@ import { FaTwitter, FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import '../globals.css';
+import '@/app/globals.css';
 const navigation = [
   { name: 'Learn More', href: '/learn-more' },
   { name: 'FAQ', href: '/faq' },
@@ -124,8 +124,8 @@ export default function Example() {
         
         <div className="max-w-2xl py-16 mx-auto sm:py-24 lg:py-8">
         <div className="text-center">
-        <h1 className="font-bold tracking-tight text-green-400 big-font text-left lh-[1.1] sm:mt-[20px] lg:mt-[60px]">
-  <code> Spark, Connect, Ignite.</code>
+        <h1 id="learn-more-heading" className="font-bold tracking-tight text-green-400 text-left lh-[1.1] sm:mt-[20px] lg:mt-[60px]">
+  <code>Learn More About HubPost</code>
 </h1>
             <p className="mt-6 text-lg leading-8 text-left text-white">
               Spark your passion, Connect with your purpose, and ignite your potential. Believe in yourself,

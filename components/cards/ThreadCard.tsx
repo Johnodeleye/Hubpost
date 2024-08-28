@@ -87,7 +87,11 @@ const ThreadCard = ({
                                  width={24} height={24} className='object-contain cursor-pointer'/>
                             </div>
                             
-                            {isComment && comments.length > 0}
+                            {isComment && comments.length > 0 && (
+                                <Link href={`/thread/${id}`}>
+                                <p className="mt-1 text-subtle-medium text-gray-1">{comments.length} replies </p>
+                                </Link>
+                            )}
                         </div>
                      </div>
                 </div>

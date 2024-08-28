@@ -8,8 +8,7 @@ import {Form,FormControl,FormField,FormItem,FormLabel,FormMessage } from
 import { Textarea } from '../ui/textarea';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {usePathname, useRouter} from 'next/navigation';
-import Image from 'next/image';
-import { Input } from '../ui/input';
+
 
 // import { updateUser } from '@/lib/actions/user.action';
 import {ThreadValidation} from '@/lib/validations/thread';
@@ -45,7 +44,7 @@ function PostThread({ userId }: { userId: string }) {
              author: userId,
              communityId: null, 
              path: pathname
-            })
+            });
             
             router.push('/feed')
       }

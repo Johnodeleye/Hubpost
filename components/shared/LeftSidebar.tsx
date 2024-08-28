@@ -10,7 +10,7 @@ function LeftSidebar() {
     const pathname = usePathname();
     return (
         <section className="custom-scrollbar leftsidebar">
-            <div className="flex w-full flex-1 flex-col gap-6 px-6">
+            <div className="flex flex-col flex-1 w-full gap-6 px-6">
                 {/* To connect or map the links from index.js in constant folder */}
                 {sidebarLinks.map((link) => {
                     const isActive = (pathname.includes
@@ -38,11 +38,11 @@ function LeftSidebar() {
                 )}
                 )}
             </div>
-                        <div className="mt-10 px-6">
+                        <div className="px-6 mt-10">
                         <SignedIn>
-                        <button onClick={() => router.push("/sign-in")}>
+                        <button onClick={() => router.push("/")}>
                         <SignOutButton>
-                        <div className="flex cursor-pointer gap-4 p-4">
+                        <div className="flex gap-4 p-4 cursor-pointer">
                             <Image src={'/assets/logout.svg'}alt="Logout" width={24} height={24}/>
                             <p className="text-green-600 max-lg:hidden">Logout</p>
                         </div>
