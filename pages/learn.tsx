@@ -6,14 +6,14 @@ import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import '@/app/globals.css';
 const navigation = [
-  { name: 'Learn More', href: '/learn-more' },
+  { name: 'Learn More', href: '/learn' },
   { name: 'FAQ', href: '/faq' },
   { name: 'Founder', href: '/founder' },
   { name: 'Contact', href: '/contact' },
   { name: 'Join Community', href: '/social' },
 ]
 
-export default function Example() {
+export default function Learn() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -134,12 +134,12 @@ export default function Example() {
             </p>
             <div className="flex items-center mt-10 text-left gap-x-6">
               <a
-                href="/sign-up"
+                href="/learnmore"
                 className="rounded-md bg-green-600 px-3.5 py-2.5 text-sm font-semibold text-white text-left shadow-sm hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red lg:text-left lg:ml-0"
               >
-                Get started
+                Continue
               </a>
-              <a href="#" className="text-sm font-semibold leading-6 text-green-600">
+              <a href="/learnmore" className="text-sm font-semibold leading-6 text-green-600">
                 Learn more <span aria-hidden="true">→</span>
               </a>
             </div>  
@@ -148,8 +148,9 @@ export default function Example() {
       </div>
       
       {/* footer */}
+      
       <footer className="p-5 text-left text-white bg-gray-800">
-  <p className="md:ml-[37vw] md:mt-0">Copyright 2024 HubPost. All rights reserved.</p>
+  <p className=" md:mt-0 copy">&copy; 2024 HubPost. All rights reserved.</p>
   <ul className="flex justify-center mb-4">
     <li className="mr-4">
       <a href="#" className="text-green-400 hover:text-gray-400">

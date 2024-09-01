@@ -17,9 +17,10 @@ interface Props{
     threadId: string;
     currentUserImg: string;
     currentUserId: string;
+    currentUserName: string;
 }
 
-const Comment = ({ threadId, currentUserImg, currentUserId,}: Props) => {
+const Comment = ({ threadId, currentUserImg, currentUserId, currentUserName}: Props) => {
     
         const router = useRouter();
         const pathname = usePathname();
@@ -61,13 +62,12 @@ const Comment = ({ threadId, currentUserImg, currentUserId,}: Props) => {
                   />
                 </FormLabel>
                 <FormControl className='bg-transparent border-none'>
-                  <Input
-                    type='text'
-                    placeholder='Comment...'
-                    //TODO CHANGE THIS COMMENT... TO COMMENT AS {AUTHOR.NAME}
-                    className='outline-none no-focus text-light-1'
-                    {...field}
-                  />
+                <Input
+                  type='text'
+                  placeholder={`Comment as ${currentUserName}`}
+                  className='outline-none no-focus text-light-1'
+                  {...field}
+                />
                   
                 </FormControl>
               </FormItem>

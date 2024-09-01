@@ -9,7 +9,7 @@ const page = async ({ params }: { params: { id: string}}) => {
     if(!params.id) return null;
     
     const user = await currentUser();
-    if(!user) return null;
+    if(!user) redirect('/sign-up');
     
     const userInfo = await fetchUser(user.id);
     if(!userInfo?.onboarded) redirect('/onboarding');
@@ -35,10 +35,29 @@ const page = async ({ params }: { params: { id: string}}) => {
     <div className="mt-7">
         <Comment
         threadId={thread.id}
-        currentUserImg={user.imageUrl}
+        //i HAVE WANTED TO FIX THE BUG ABOUT THE IMAGE IN THE COMMENT, BUT THANKS TO JS MASTERY THAT HELPED ME 
+        //AND IT IS CHANGED AND FIXED BY DOING THE currentUserImg as userinfo.image which is from our databse
+        currentUserImg={userInfo.image}
+        currentUserName={userInfo.name}
         currentUserId={JSON.stringify(userInfo._id)}
         />
-        
+    </div>
+    
+    <div className='mt-10'>
+        {thread.children.map((childItem: any) => (
+                <ThreadCard
+                key={childItem._id}
+                id={childItem._id}
+                currentUserId={childItem?.id || ""}
+                parentId={childItem.parentId}
+                content={childItem.text}
+                author={childItem.author}
+                community={childItem.community}
+                createdAt={childItem.createdAt}
+                comments={childItem.children}
+                isComment
+            />
+        ))}
     </div>
     </section>
   )

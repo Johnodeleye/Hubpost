@@ -6,7 +6,7 @@ import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import '../globals.css';
 const navigation = [
-  { name: 'Learn More', href: '/learn-more' },
+  { name: 'Learn More', href: '/learn' },
   { name: 'FAQ', href: '/faq' },
   { name: 'Founder', href: '/founder' },
   { name: 'Contact', href: '/contact' },
@@ -26,7 +26,7 @@ export default function Example() {
               <img
                 alt="HubPost Logo"
                 src="/Logo White.png"
-                className="w-32 h-15"
+                className="w-24 h-15"
               />
             </a>
           </div>
@@ -139,7 +139,7 @@ export default function Example() {
               >
                 Get started
               </a>
-              <a href="#" className="text-sm font-semibold leading-6 text-green-600">
+              <a href="/learn" className="text-sm font-semibold leading-6 text-green-600">
                 Learn more <span aria-hidden="true">→</span>
               </a>
             </div>  
@@ -148,8 +148,9 @@ export default function Example() {
       </div>
       
       {/* footer */}
+      
       <footer className="p-5 text-left text-white bg-gray-800">
-  <p className="md:ml-[37vw] md:mt-0">Copyright 2024 HubPost. All rights reserved.</p>
+  <p className=" md:mt-0 copy">&copy; 2024 HubPost. All rights reserved.</p>
   <ul className="flex justify-center mb-4">
     <li className="mr-4">
       <a href="#" className="text-green-400 hover:text-gray-400">

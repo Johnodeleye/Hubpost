@@ -214,3 +214,12 @@ body{
     font-size: 6rem;
   }
 }
+
+.text-heading3-bold {
+  display: flex;
+  align-items: center;
+}
+
+.copy{
+  margin-left: 30%;
+}

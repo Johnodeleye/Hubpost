@@ -12,7 +12,7 @@ export const sidebarLinks = [
     {
       imgURL: "/assets/heart.svg",
       route: "/activity",
-      label: "Notification",
+      label: "Activity",
     },
     {
       imgURL: "/assets/create.svg",
@@ -31,6 +31,7 @@ export const sidebarLinks = [
     },
   ];
   
+  //This profileTabs is what is in the tabList in the user profile
   export const profileTabs = [
     { value: "threads", label: "Threads", icon: "/assets/reply.svg" },
     { value: "replies", label: "Replies", icon: "/assets/members.svg" },
