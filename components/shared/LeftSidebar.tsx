@@ -15,8 +15,7 @@ function LeftSidebar() {
             <div className="flex flex-col flex-1 w-full gap-6 px-6">
                 {/* To connect or map the links from index.js in constant folder */}
                 {sidebarLinks.map((link) => {
-                    const isActive = (pathname.includes(link.route) && link.route.
-                    length > 1) ||pathname === link.route;
+            const isActive = pathname ? (pathname.includes(link.route) && link.route.length > 1) || pathname === link.route : false;
                     
                     if (link.route === "/profile") link.route = `${link.route}/${userId}`;
 

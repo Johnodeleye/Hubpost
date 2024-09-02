@@ -37,18 +37,16 @@ function PostThread({ userId }: { userId: string }) {
               accountId: userId,
           }
       })
-        //this createThread is coming from thread.actions.ts
       const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
         await createThread({
-             text: values.thread,
-             author: userId,
-             communityId: null, 
-             path: pathname
-            });
-            
-            router.push('/feed')
-      }
-
+          text: values.thread,
+          author: userId,
+          communityId: null,
+          path: pathname ?? '', // Add nullish coalescing operator here
+        });
+      
+        router.push('/feed');
+      };
     return (
         <Form {...form}>
         <form
