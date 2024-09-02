@@ -90,12 +90,12 @@ const AccountProfile = ({ user, btnTitle}: Props) => {
       }
       
       await updateUser({
-         userId: user.id,
-         username: values.username,
-         name: values.name,
-         bio: values.bio,
-         image: values.profile_photo,
-         path: pathname,
+        userId: user.id,
+        username: values.username,
+        name: values.name,
+        bio: values.bio,
+        image: values.profile_photo,
+        path: pathname ?? '', // Add nullish coalescing operator here
       });
       
       if (pathname === '/profile/edit') {
