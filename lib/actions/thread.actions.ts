@@ -15,8 +15,8 @@ interface Params {
 export async function createThread({text, author, communityId, path }: Params) {
     
     try {
-        connectToDB();
-
+        connectToDB()
+        
         const createdThread = await Thread.create({
             text,
             author,

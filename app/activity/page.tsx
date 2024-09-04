@@ -6,6 +6,7 @@ import { fetchUser, getActivity } from "@/lib/actions/user.actions";
 import Link from 'next/link';
 import Image from 'next/image'
 
+
     async function page() {
     const user = await currentUser(); 
     if (!user) redirect('/sign-up');

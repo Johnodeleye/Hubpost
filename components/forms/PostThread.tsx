@@ -8,11 +8,11 @@ import {Form,FormControl,FormField,FormItem,FormLabel,FormMessage } from
 import { Textarea } from '../ui/textarea';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {usePathname, useRouter} from 'next/navigation';
-
-
 // import { updateUser } from '@/lib/actions/user.action';
 import {ThreadValidation} from '@/lib/validations/thread';
 import { createThread } from '@/lib/actions/thread.actions';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Props {
     user: {
@@ -37,16 +37,21 @@ function PostThread({ userId }: { userId: string }) {
               accountId: userId,
           }
       })
-      const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
-        await createThread({
-          text: values.thread,
-          author: userId,
-          communityId: null,
-          path: pathname ?? '', // Add nullish coalescing operator here
-        });
-      
-        router.push('/feed');
-      };
+  const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
+    try {
+      await createThread({
+        text: values.thread,
+        author: userId,
+        communityId: null,
+        path: pathname ?? '',
+      });
+      router.push('/feed');
+      toast.success("Post uploaded successfully!"); // Display success toast
+    } catch (error) {
+      toast.error("Error uploading post!"); // Display error toast
+    }
+  };
+
     return (
         <Form {...form}>
         <form
@@ -75,6 +80,7 @@ function PostThread({ userId }: { userId: string }) {
           <Button type='submit' className='bg-green-600'>
             Post
           </Button>
+          <ToastContainer theme="dark" />
         </form>
         </Form>
     );
