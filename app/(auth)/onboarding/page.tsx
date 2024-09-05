@@ -9,7 +9,7 @@ async function Page() {
   if (!user) redirect('/sign-up'); // to avoid typescript warnings
 
   const userInfo = await fetchUser(user.id);
-  if (userInfo?.onboarded) redirect("/feed");
+  // if (userInfo?.onboarded) redirect("/feed");
 
   const userData = {
     id: user.id,

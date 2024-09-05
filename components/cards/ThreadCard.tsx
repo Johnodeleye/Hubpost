@@ -3,6 +3,7 @@ import Link from "next/link";
 import Verified from '../verified';
 import { formatDateString } from "@/lib/utils";
 import DeleteThread from "../forms/DeleteThread";
+import LikeThread from "../forms/LikeThread";
 
 interface Props {
     id: string;
@@ -46,10 +47,16 @@ const verifiedUserIds = ['user_2kpwAQF5MVv9VqLpURDP1QNAyhf',
       
         if (minutes < 60) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
         if (hours < 24) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
-        if (days < 2) return `Yesterday, ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+        if (days < 1) return `Yesterday, ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+        if (days < 2) return `${days} day ago, ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
         if (days < 7) return `${days} day${days > 1 ? 's' : ''} ago`;
         return `${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - ${date.toLocaleDateString()}`;
       };
+
+      const handleClick = () => {
+        alert('Button clicked!');
+    };
+
 
 const ThreadCard = ({
     id,
@@ -92,8 +99,10 @@ const ThreadCard = ({
                         {/* div for social icons like reply, like, repost,share etc */}
                         <div className={`${isComment && "mb-10"} mt-5 flex flex-col gap-3`}>
                             <div className='flex gap-3.5'>
-                                 <Image src='/assets/heart-gray.svg' alt="heart" 
-                                 width={24} height={24} className='object-contain cursor-pointer'/>
+                                
+                            <LikeThread 
+                            threadId={JSON.stringify(id)} 
+                            userId={currentUserId} />
                                  
                                  <Link href={`/thread/${id}`}>
                                  <Image src='/assets/reply.svg' alt="reply" 

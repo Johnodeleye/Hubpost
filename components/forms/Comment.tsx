@@ -7,6 +7,8 @@ import {Form,FormControl,FormField,FormItem,FormLabel,FormMessage } from
 import { Input } from "@/components/ui/input"
 import {zodResolver} from '@hookform/resolvers/zod';
 import {usePathname, useRouter} from 'next/navigation';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // import { updateUser } from '@/lib/actions/user.action';
 import {CommentValidation} from '@/lib/validations/thread';
@@ -35,8 +37,10 @@ const Comment = ({ threadId, currentUserImg, currentUserId, currentUserName}: Pr
             if (pathname) {
               await addCommentToThread(threadId, values.thread, JSON.parse(currentUserId), pathname);
               form.reset();
+              toast.success("Comment added successfully!");
             } else {
               console.error('pathname is null');
+             
               // Handle the case where pathname is null
             }
           }
@@ -77,6 +81,7 @@ const Comment = ({ threadId, currentUserImg, currentUserId, currentUserName}: Pr
           <Button type='submit' className='comment-form_btn'>
             Comment
           </Button>
+          <ToastContainer theme="dark" />
         </form>
         </Form>
     )

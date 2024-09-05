@@ -29,6 +29,7 @@ const page = async ({ params }: { params: { id: string}}) => {
         community={thread.community}
         createdAt={thread.createdAt}
         comments={thread.children}
+         // Pass isLiked prop here
     />
     </div>
     
@@ -55,7 +56,7 @@ const page = async ({ params }: { params: { id: string}}) => {
                 community={childItem.community}
                 createdAt={childItem.createdAt}
                 comments={childItem.children}
-                isComment
+                isComment // Pass isLiked prop here
             />
         ))}
     </div>
