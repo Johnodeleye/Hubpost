@@ -13,6 +13,7 @@ import {ThreadValidation} from '@/lib/validations/thread';
 import { createThread } from '@/lib/actions/thread.actions';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useOrganization } from '@clerk/nextjs';
 
 interface Props {
     user: {
@@ -29,6 +30,7 @@ interface Props {
 function PostThread({ userId }: { userId: string }) {
     const router = useRouter();
     const pathname = usePathname();
+    const { organization } = useOrganization();
     
       const form = useForm({
             resolver: zodResolver(ThreadValidation),
@@ -39,17 +41,18 @@ function PostThread({ userId }: { userId: string }) {
       })
   const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
     try {
+      console.log('ORG ID: ', organization)
       await createThread({
         text: values.thread,
         author: userId,
-        communityId: null,
+        communityId: organization ? organization.id : null,
         path: pathname ?? '',
       });
       router.push('/feed');
       toast.success("Post uploaded successfully!"); // Display success toast
     } catch (error) {
-      toast.error("Error uploading post!"); // Display error toast
-    }
+      toast.error("Error uploading post!"); // Display error toast 
+  }
   };
 
     return (

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import Verified from '../verified';
+import { formatDateString } from "@/lib/utils";
+import DeleteThread from "../forms/DeleteThread";
 
 interface Props {
     id: string;
@@ -32,6 +34,22 @@ const verifiedUserIds = ['user_2kpwAQF5MVv9VqLpURDP1QNAyhf',
      'user_2lBx6jjHJtRMASisrk0Qs6cDZDg',
      '',
     ];
+
+    const relativeTime = (dateString: string | number | Date) => {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diff = now.getTime() - date.getTime();
+      
+        const minutes = Math.floor(diff / 60000);
+        const hours = Math.floor(diff / 3600000);
+        const days = Math.floor(diff / 86400000);
+      
+        if (minutes < 60) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+        if (hours < 24) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+        if (days < 2) return `Yesterday, ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+        if (days < 7) return `${days} day${days > 1 ? 's' : ''} ago`;
+        return `${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - ${date.toLocaleDateString()}`;
+      };
 
 const ThreadCard = ({
     id,
@@ -87,7 +105,13 @@ const ThreadCard = ({
                                  <Image src='/assets/share.svg' alt="share" 
                                  width={24} height={24} className='object-contain cursor-pointer'/>
                             </div>
-                            
+
+                            {!community && (
+  <p className="text-subtle-medium text-gray-1">
+    {relativeTime(createdAt)}
+  </p>
+)}
+                        
                             {isComment && comments.length > 0 && (
                                 <Link href={`/thread/${id}`}>
                                 <p className="mt-1 text-subtle-medium text-gray-1">{comments.length} replies </p>
@@ -96,7 +120,53 @@ const ThreadCard = ({
                         </div>
                      </div>
                 </div>
+
+                <DeleteThread
+                threadId={JSON.stringify(id)}
+                currentUserId={currentUserId}
+                authorId={author.id}
+                parentId={parentId}
+                isComment={isComment}
+                />
             </div>
+
+            {!isComment && comments.length > 0 && (
+                <div className='ml-1 mt-3 flex items-center gap-2'>
+                {comments.slice(0, 2).map((comment, index) => (
+                    <Image
+                    key={index}
+                    src={comment.author.image}
+                    alt={`user_${index}`}
+                    width={24}
+                    height={24}
+                    className={`${index !== 0 && "-ml-5"} rounded-full object-cover`}
+                    />
+                ))}
+
+                <Link href={`/thread/${id}`}>
+                    <p className='mt-1 text-subtle-medium text-gray-1'>
+                    {comments.length} repl{comments.length > 1 ? "ies" : "y"}
+                    </p>
+                </Link>
+                </div>
+            )}
+
+            {!isComment && community && (
+                    <Link href={`/communities/${community.id}`} className="mt-5 flex items-center">
+                        <p className="text-subtle-medium text-gray-1">
+                            {formatDateString(createdAt)}
+                         {' '} - {community.name} Community
+                        </p>
+
+                        <Image
+                        src={community.image}
+                        alt={community.name}
+                        width={14}
+                        height={14}
+                        className='ml-1 rounded-full object-cover'
+                        />
+                    </Link>
+                )}
         </article>
         
     )
