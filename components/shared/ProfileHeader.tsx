@@ -56,18 +56,18 @@ const ProfileHeader = ({
                 </div>
               </div>
 
-              <div>
+              <div className='mt-4  bg-dark-3'>
               {accountId === authUserId && type !== "Community" && (
                 <Link href='/profile/edit'>
                     <div className='flex cursor-pointer gap-3 rounded-lg bg-dark-3 px-4 py-2'>
                     <Image
                         src='/assets/edit.svg'
-                        alt='logout'
+                        alt='edit'
                         width={16}
                         height={16}
                     />
 
-              <p className='text-light-2 max-sm:hidden'>Edit</p>
+              <p className='text-green-600'>Edit Profile</p>
             </div>
           </Link>
              )}
