@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Verified from '../verified';
+import Link from 'next/link';
 // import '@/app/globals.css';
 //This interface Props defines the Props that we are passing int this profileHeader
 interface Props{
@@ -9,7 +10,7 @@ interface Props{
     username: string;
     imgUrl: string;
     bio: string;
-    type?: 'User' | 'Community';
+    type?: string;
 }
 
 //List of Verified User
@@ -24,7 +25,9 @@ const ProfileHeader = ({
     name,
     username,
     imgUrl,
-    bio }: Props) =>{
+    bio,
+    type,
+ }: Props) =>{
     return(
         <div className='flex flex-col justify-start w-full'>
             <div className='flex items-center justify between'>
@@ -52,7 +55,23 @@ const ProfileHeader = ({
                     </div>
                 </div>
               </div>
-              {/* TODO: Community */}
+
+              <div>
+              {accountId === authUserId && type !== "Community" && (
+                <Link href='/profile/edit'>
+                    <div className='flex cursor-pointer gap-3 rounded-lg bg-dark-3 px-4 py-2'>
+                    <Image
+                        src='/assets/edit.svg'
+                        alt='logout'
+                        width={16}
+                        height={16}
+                    />
+
+              <p className='text-light-2 max-sm:hidden'>Edit</p>
+            </div>
+          </Link>
+             )}
+              </div>
               
               <p className='max-w-lg mt-6 text-base-regular text-light-2'>{bio}</p>
               

@@ -239,15 +239,15 @@ export async function addCommentToThread(
   }
 }
 
-
-export async function likeThread(threadId: string, userId: string) {
-  try {
-    connectToDB();
-    // Update the thread document in the database to add the user's like
-    await Thread.updateOne({ _id: threadId }, { $addToSet: { likes: userId } });
-    return true;
-  } catch (error: any) {
-    console.error(error);
-    return false;
-  }
-}
+import { Types } from 'mongoose';
+// export async function likeThread(threadId: string, userId: string) {
+//   try {
+//     connectToDB();
+//     const objectId = Types.ObjectId(threadId);
+//     await Thread.updateOne({ _id: objectId }, { $addToSet: { likes: userId } });
+//     return true;
+//   } catch (error) {
+//     console.error(error);
+//     return false;
+//   }
+// }
