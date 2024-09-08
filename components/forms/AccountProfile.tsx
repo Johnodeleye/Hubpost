@@ -57,6 +57,10 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
   });
 
   const onSubmit = async (values: z.infer<typeof UserValidation>) => {
+    toast.loading("Uploading your profile details...", {
+      toastId: "uploading-profile",
+      autoClose: false,
+    });
     const blob = values.profile_photo;
 
     const hasImageChanged = isBase64Image(blob);
@@ -78,10 +82,12 @@ path: pathname ?? "",
 
     if (pathname === "/profile/edit") {
       router.back();
+      toast.dismiss("uploading-profile");
       toast.success('Profile updated successfully');
     } else {
       router.push("/feed");
-      toast.success('Profile updated successfully');
+      toast.dismiss("uploading-profile");
+      toast.error('Error updating profile');
     }
   };
 
