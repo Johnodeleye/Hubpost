@@ -20,12 +20,13 @@ const OverlayAlert = () => {
               onClick={handleClose}
             />
             <img src="/logo white.png" alt="Hubpost Logo" className="w-24 h-24 mb-1" />
-            <p className="text-lg font-bold md:w-full md:flex md:flex-col">
-          Updating your profile picture is required for {''}
-          your profile changes to take effect.
-          <br className="md:inline" />
-          Please re-upload your profile picture to complete your update
-        </p>
+            <p className="text-lg font-bold md:w-full md:flex md:flex-col md:items-center">
+  Please re-upload your profile picture to complete your profile changes.
+  <br className="md:inline" />
+  This ensures your updated information is accurately reflected.
+  <br className="md:inline" />
+  <span className="text-green-600">(Note: This step is necessary even if you've uploaded a picture before)</span>
+</p>
           </div>
         </div>
       )}

@@ -9,7 +9,7 @@ import AccountProfile from "@/components/forms/AccountProfile";
 async function Page() {
   
   const user = await currentUser();
-  if (!user) return null;
+  if (!user) redirect('/sign-up');
 
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
