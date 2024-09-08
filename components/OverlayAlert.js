@@ -11,8 +11,8 @@ const OverlayAlert = () => {
   return (
     <>
       {isVisible && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-4 rounded-lg relative max-w-md mx-auto md:max-w-lg lg:max-w-2xl">
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center !important">
+          <div className="bg-white p-4 rounded-lg relative max-w-md mx-auto md:max-w-lg lg:max-w-2xl !important">
             <img
               src="/assets/close.svg"
               alt="Close"
