@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { usePathname, useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   Form,
@@ -76,8 +78,10 @@ path: pathname ?? "",
 
     if (pathname === "/profile/edit") {
       router.back();
+      toast.success('Profile updated successfully');
     } else {
       router.push("/feed");
+      toast.success('Profile updated successfully');
     }
   };
 
@@ -212,6 +216,7 @@ path: pathname ?? "",
           <Button type='submit' className='bg-green-600'>
             {btnTitle}
           </Button>
+          <ToastContainer theme="dark" />
         </form>
       </Form>
   );
