@@ -19,7 +19,7 @@ const OverlayAlert = () => {
               className="absolute top-0 right-0 w-9 h-9 cursor-pointer"
               onClick={handleClose}
             />
-            <img src="/logo white.png" alt="Hubpost Logo" className="w-24 h-24 mb-1" />
+            <img src="/Logo White.png" alt="Hubpost Logo" className="w-24 h-24 mb-1" />
             <p className="text-lg font-bold md:w-full md:flex md:flex-col md:items-center">
               Please re-upload your profile picture to complete your profile changes.
               <br className="md:inline" />

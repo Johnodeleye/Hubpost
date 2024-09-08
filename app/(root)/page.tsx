@@ -61,7 +61,7 @@ export default function Example() {
                 <span className="sr-only"> HubPost </span>
                 <img
                   alt="HubPost"
-                  src="/Logo white.png"
+                  src="/Logo White.png"
                   className="w-auto h-8"
                 />
               </a>
