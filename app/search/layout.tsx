@@ -10,7 +10,7 @@ import Bottombar from "@/components/shared/Bottombar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'HubPost',
+  title: 'Search HubPost',
   description: 'Spark || Connect || Ignite'
 }
 

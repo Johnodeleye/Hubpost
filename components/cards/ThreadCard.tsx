@@ -50,9 +50,8 @@ const verifiedUserIds = ['user_2kpwAQF5MVv9VqLpURDP1QNAyhf',
         if (days < 1) return `Yesterday, ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
         if (days < 2) return `${days} day ago, ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
         if (days < 7) return `${days} day${days > 1 ? 's' : ''} ago`;
-        return `${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - ${date.toLocaleDateString()}`;
+        return `${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })} - ${date.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}`;
       };
-    
 
 
 const ThreadCard = ({

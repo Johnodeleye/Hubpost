@@ -4,8 +4,10 @@ import { redirect } from "next/navigation";
 
 async function Page() {
   const user = await currentUser();
-  if (user) redirect("/feed");
+  if (user) return redirect("/sign-in");
+
   return (
+    <div>
       <SignIn
         appearance={{
           elements: {
@@ -19,6 +21,7 @@ async function Page() {
           },
         }}
       />
+    </div>
   )
 }
 

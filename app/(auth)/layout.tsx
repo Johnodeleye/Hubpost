@@ -6,7 +6,7 @@ import { Inter } from "next/font/google"
 import '../globals.css';
 //this also allows us to have more cleaner SEO
 export const metadata = {
-    title: 'HubPost',
+    title: 'Join HubPost',
     description: 'Spark || Connect || Ignite'
 }
 //font
