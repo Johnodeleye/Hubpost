@@ -17,10 +17,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <Head>
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZKVC5YYKT8"></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ZKVC5YYKT8');
+          `}
+        </script>
+      </Head>
+      <body className={inter.className}>
+        <ClerkProvider>
+          {children}
+        </ClerkProvider>
+      </body>
     </html>
-    </ClerkProvider>
   );
 }
