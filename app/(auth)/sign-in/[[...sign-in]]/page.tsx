@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 
 async function Page() {
   const user = await currentUser();
-  if (user) return redirect("/sign-in");
+  if (user) return redirect("/feed");
 
   return (
     <div>
