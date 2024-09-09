@@ -40,6 +40,10 @@ function PostThread({ userId }: { userId: string }) {
           }
       })
   const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
+    toast.loading("Uploading your post...", {
+      toastId: "uploading-post",
+      autoClose: false,
+    });
     try {
       console.log('ORG ID: ', organization)
       await createThread({
@@ -49,8 +53,10 @@ function PostThread({ userId }: { userId: string }) {
         path: pathname ?? '',
       });
       router.push('/feed');
-      toast.success("Post uploaded successfully!"); // Display success toast
+      toast.dismiss("uploading-post");
+      toast.success('Post uploaded successfully'); // Display success toast
     } catch (error) {
+      toast.dismiss("uploading-profile");
       toast.error("Error uploading post!"); // Display error toast 
   }
   };
