@@ -26,17 +26,15 @@ export default function HeartToggle() {
       setCount(isLiked ? count - 1 : count + 1);
     };
 
-  return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <button onClick={toggleLike} style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}>
-        <Image
-          src={isLiked ? '/assets/heart-filled.svg' : '/assets/heart-gray.svg'}
-          alt="heart icon"
-          width={50}
-          height={50}
-        />
-        <p>{count}</p>
-      </button>
-    </div>
-  );
+    return (
+        <button onClick={toggleLike} style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}>
+          <Image
+            src={isLiked ? '/assets/heart-filled.svg' : '/assets/heart-gray.svg'}
+            alt="heart icon"
+            width={24} // Reduced width and height to match other buttons
+            height={24}
+          />
+          <p className='text-green-600 text-small-semibold'>{count}</p>
+        </button>
+      );
 }

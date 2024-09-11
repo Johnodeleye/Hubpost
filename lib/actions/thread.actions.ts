@@ -240,14 +240,3 @@ export async function addCommentToThread(
 }
 
 import { Types } from 'mongoose';
-// export async function likeThread(threadId: string, userId: string) {
-//   try {
-//     connectToDB();
-//     const objectId = Types.ObjectId(threadId);
-//     await Thread.updateOne({ _id: objectId }, { $addToSet: { likes: userId } });
-//     return true;
-//   } catch (error) {
-//     console.error(error);
-//     return false;
-//   }
-// }

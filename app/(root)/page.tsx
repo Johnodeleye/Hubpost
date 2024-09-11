@@ -19,19 +19,6 @@ export default function Example() {
 
   return (
     <div className='min-h-screen overflow-hidden bg-[#1F2937]'>
-    <Head>
-    {/* Google tag (gtag.js) */}
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZKVC5YYKT8"></script>
-    <script>
-      {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-ZKVC5YYKT8');
-      `}
-    </script>
-  </Head>
       <header className="absolute inset-x-0 top-0 z-50">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
